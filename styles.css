@@ -4,20 +4,48 @@ body {
     margin: 0;
     padding: 20px;
 }
+
 .widget-container {
     max-width: 900px;
     margin: 0 auto;
 }
-.loading {
-    text-align: center;
-    font-size: 1.1rem;
-    color: #666;
+
+@keyframes shimmer {
+    0% {
+        background-position: -200px 0;
+    }
+
+    100% {
+        background-position: 200px 0;
+    }
 }
+
+.skeleton-card {
+    height: 300px;
+    background: #eee;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.skeleton-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0));
+    background-size: 200px 100%;
+    animation: shimmer 1.5s infinite;
+}
+
 .cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 20px;
 }
+
 .card {
     background: #fff;
     border-radius: 10px;
@@ -27,22 +55,27 @@ body {
     overflow: hidden;
     transition: transform 0.2s;
 }
+
 .card:hover {
     transform: translateY(-5px);
 }
+
 .card img {
     width: 100%;
     height: 160px;
     object-fit: cover;
 }
+
 .card-content {
     padding: 16px;
     flex: 1;
 }
+
 .card-title {
     font-size: 1.3rem;
     margin: 0 0 8px;
 }
+
 .card-desc {
     font-size: 0.95rem;
     line-height: 1.4;
@@ -50,6 +83,7 @@ body {
     max-height: 5.6em;
     overflow-y: auto;
 }
+
 .card-actions {
     display: flex;
     flex-wrap: wrap;
@@ -58,6 +92,7 @@ body {
     padding: 0 16px 16px;
     gap: 8px;
 }
+
 .button {
     background: #007bff;
     color: #fff;
@@ -68,11 +103,13 @@ body {
     text-decoration: none;
     font-size: 0.9rem;
 }
+
 .vote-group {
     display: flex;
     align-items: center;
     gap: 6px;
 }
+
 .vote-btn {
     background: none;
     border: none;
@@ -81,20 +118,25 @@ body {
     opacity: 0.4;
     transition: opacity 0.2s;
 }
+
 .vote-btn.upvote {
     color: green;
-}  
+}
+
 .vote-btn.downvote {
     color: red;
 }
+
 .vote-btn.active {
     opacity: 1;
 }
+
 .vote-count {
     font-weight: bold;
     min-width: 24px;
     text-align: center;
 }
+
 .modal {
     position: fixed;
     top: 0;
@@ -109,10 +151,12 @@ body {
     pointer-events: none;
     transition: opacity 0.3s;
 }
+
 .modal.visible {
     opacity: 1;
     pointer-events: all;
 }
+
 .modal-content {
     background: #fff;
     padding: 24px;
@@ -121,6 +165,7 @@ body {
     max-width: 420px;
     position: relative;
 }
+
 .close {
     position: absolute;
     top: 12px;
