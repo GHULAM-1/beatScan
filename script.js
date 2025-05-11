@@ -51,9 +51,9 @@ function renderIdeas() {
       </div>
       <div class="card-actions">
         <div class="vote-group">
-          <button class="vote-btn upvote ${upActive?'active':''}">👍</button>
+          <button class="vote-btn upvote ${upActive?'active':''}">&#9650</button>
           <span class="vote-count">${idea.votes.up}</span>
-          <button class="vote-btn downvote ${downActive?'active':''}">👎</button>
+          <button class="vote-btn downvote ${downActive?'active':''}">&#9660</button>
           <span class="vote-count">${idea.votes.down}</span>
         </div>
         <button class="button edit-btn">Edit</button>
@@ -61,6 +61,19 @@ function renderIdeas() {
       </div>
     `;
     cardsContainer.appendChild(card);
+    card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const xVal = e.clientX - rect.left;
+        const yVal = e.clientY - rect.top;
+        const xNorm = (xVal / rect.width) - 0.5;
+        const yNorm = (yVal / rect.height) - 0.5;
+        const rotY = -xNorm * 20; 
+        const rotX = yNorm * 20;
+        card.style.transform = `rotateY(${rotY}deg) rotateX(${rotX}deg) translateZ(20px)`;
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = `translateZ(0)`;
+      });
     card.querySelector('.upvote').addEventListener('click', () => updateVote(idea.id,'up'));
     card.querySelector('.downvote').addEventListener('click', () => updateVote(idea.id,'down'));
     card.querySelector('.edit-btn').addEventListener('click', () => openModal(idea));
