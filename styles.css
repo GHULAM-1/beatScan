@@ -3,7 +3,6 @@ body {
     background: #f5f5f5;
     margin: 0 auto;
     max-width: 1440px;
-
 }
 
 .site-header {
@@ -27,6 +26,20 @@ body {
 .logo img {
     height: 40px;
     width: auto;
+}
+
+.site-footer {
+    background-color: #ff1694;
+    padding: 20px 0;
+    margin-top: 40px;
+}
+
+.site-footer .container {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+    color: #fff;
+    font-size: 0.9rem;
 }
 
 .widget-container {
@@ -78,7 +91,6 @@ body {
     flex-direction: column;
     overflow: hidden;
     transform-style: preserve-3d;
-    /* allow 3D transforms */
     transition: transform 0.3s ease;
 }
 
